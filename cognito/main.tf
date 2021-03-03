@@ -17,7 +17,7 @@ resource "aws_cognito_user_pool" "main" {
 
 resource "aws_cognito_user_pool_client" "main" {
   name = var.aws_cognito_user_pool_client_name
-  user_pool_id = aws_cognito_user_pool.user_pool.id
+  user_pool_id = aws_cognito_user_pool.main.id
   explicit_auth_flows = [
     "ALLOW_ADMIN_USER_PASSWORD_AUTH",
     "ALLOW_CUSTOM_AUTH",
@@ -62,6 +62,6 @@ resource "aws_iam_role" "main" {
 
 resource "aws_cognito_user_group" "main" {
   name = var.aws_cognito_user_group_name
-  user_pool_id = aws_cognito_user_pool.user_pool.id
-  role_arn = aws_iam_role.group_role.arn
+  user_pool_id = aws_cognito_user_pool.main.id
+  role_arn = aws_iam_role.main.arn
 }
