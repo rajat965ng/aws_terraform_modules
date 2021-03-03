@@ -1,5 +1,5 @@
-resource "aws_cognito_user_pool" "user_pool" {
-  name = "office"
+resource "aws_cognito_user_pool" "main" {
+  name = "${var.aws_cognito_user_pool_name}"
   auto_verified_attributes = ["email"]
   mfa_configuration = "OFF"
   email_configuration {
@@ -15,8 +15,8 @@ resource "aws_cognito_user_pool" "user_pool" {
   }
 }
 
-resource "aws_cognito_user_pool_client" "user_pool" {
-  name = "office_client"
+resource "aws_cognito_user_pool_client" "main" {
+  name = "${var.aws_cognito_user_pool_client_name}"
   user_pool_id = aws_cognito_user_pool.user_pool.id
   explicit_auth_flows = [
     "ALLOW_ADMIN_USER_PASSWORD_AUTH",
@@ -31,8 +31,8 @@ resource "aws_cognito_user_pool_client" "user_pool" {
 }
 
 
-resource "aws_iam_role" "group_role" {
-  name = "office_group_role"
+resource "aws_iam_role" "main" {
+  name = "${var.aws_iam_role_name}"
   tags = {
     "role_tag" = "office_role_tag"
   }
@@ -60,8 +60,8 @@ resource "aws_iam_role" "group_role" {
   EOF
 }
 
-resource "aws_cognito_user_group" "user_group" {
-  name = "office_user_group"
+resource "aws_cognito_user_group" "main" {
+  name = "${var.aws_cognito_user_group_name}"
   user_pool_id = aws_cognito_user_pool.user_pool.id
   role_arn = aws_iam_role.group_role.arn
 }
