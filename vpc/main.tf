@@ -107,16 +107,17 @@ resource "aws_security_group" "main" {
   depends_on  = [aws_vpc.main]
 
   egress {
-    from_port = 0
-    protocol = "-1"
-    to_port = 0
-    self = true
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
+    self      = true
   }
 
   ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "ssh"
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
+    self      = true
   }
 
   tags = {
