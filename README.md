@@ -6,3 +6,4 @@
 
 - Cognito
 - VPC
+- EKS (Elastic Kubernetes Service)
