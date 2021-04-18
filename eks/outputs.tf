@@ -26,13 +26,13 @@ clusters:
 - cluster:
     server: ${aws_eks_cluster.demo.endpoint}
     certificate-authority-data: ${aws_eks_cluster.demo.certificate_authority[0].data}
-  name: ${var.cluster-name}
+  name: ${aws_eks_cluster.demo.name}
 contexts:
 - context:
-    cluster: ${var.cluster-name}
+    cluster: ${aws_eks_cluster.demo.name}
     user: aws
-  name: ${var.cluster-name}
-current-context: ${var.cluster-name}
+  name: ${aws_eks_cluster.demo.name}
+current-context: ${aws_eks_cluster.demo.name}
 kind: Config
 preferences: {}
 users:
