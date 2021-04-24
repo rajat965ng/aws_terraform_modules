@@ -1,7 +1,7 @@
 resource "aws_cognito_user_pool" "main" {
-  name = var.aws_cognito_user_pool_name
+  name                     = var.aws_cognito_user_pool_name
   auto_verified_attributes = ["email"]
-  mfa_configuration = "OFF"
+  mfa_configuration        = "OFF"
   email_configuration {
     email_sending_account = "COGNITO_DEFAULT"
   }
@@ -10,13 +10,13 @@ resource "aws_cognito_user_pool" "main" {
   }
   schema {
     attribute_data_type = "String"
-    name = "email"
-    required = true
+    name                = "email"
+    required            = true
   }
 }
 
 resource "aws_cognito_user_pool_client" "main" {
-  name = var.aws_cognito_user_pool_client_name
+  name         = var.aws_cognito_user_pool_client_name
   user_pool_id = aws_cognito_user_pool.main.id
   explicit_auth_flows = [
     "ALLOW_ADMIN_USER_PASSWORD_AUTH",
@@ -26,8 +26,8 @@ resource "aws_cognito_user_pool_client" "main" {
     "ALLOW_USER_SRP_AUTH"
   ]
   allowed_oauth_flows_user_pool_client = false
-  generate_secret = false
-  prevent_user_existence_errors = "ENABLED"
+  generate_secret                      = false
+  prevent_user_existence_errors        = "ENABLED"
 }
 
 
@@ -61,7 +61,7 @@ resource "aws_iam_role" "main" {
 }
 
 resource "aws_cognito_user_group" "main" {
-  name = var.aws_cognito_user_group_name
+  name         = var.aws_cognito_user_group_name
   user_pool_id = aws_cognito_user_pool.main.id
-  role_arn = aws_iam_role.main.arn
+  role_arn     = aws_iam_role.main.arn
 }
