@@ -5,7 +5,3 @@ locals {
 output "ingress_ip" {
   value = "${local.ingress_ip}"
 }
-
-output "yamls" {
-  value = "${data.kubectl_path_documents.manifests}"
-}
