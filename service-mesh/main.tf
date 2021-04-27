@@ -10,6 +10,7 @@ resource "helm_release" "istio-base" {
   depends_on = [kubernetes_namespace.istio-ns]
   name       = "istio-base"
   chart      = "helm-charts/istio/manifests/charts/base"
+  dependency_update = true
   namespace  = kubernetes_namespace.istio-ns.metadata.0.name
 }
 
