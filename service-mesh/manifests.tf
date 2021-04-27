@@ -1,4 +1,6 @@
 resource "kubernetes_namespace" "book_info" {
+  depends_on = [helm_release.istiod]
+  
   metadata {
     name = "book-info"
     labels = {
