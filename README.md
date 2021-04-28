@@ -10,9 +10,8 @@
 - Istio [Service Mesh] 
   - Sample BookInfo Application
   - Prometheus and Grafana
-  - Elasticsearch 
-  - Logstash
-  - Kibana
+  - Elasticsearch, Logstash and Kibana (ELK) 
+  - Filebeat
 
 
 ## Providers [provider.tf]
