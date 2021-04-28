@@ -10,6 +10,9 @@
 - Istio [Service Mesh] 
   - Sample BookInfo Application
   - Prometheus and Grafana
+  - Elasticsearch 
+  - Logstash
+  - Kibana
 
 
 ## Providers [provider.tf]
@@ -33,7 +36,7 @@ provider "helm" {
 }
 ```
 
-## Main [main.tf]
+## EKS [eks/main.tf]
 
 ```
 module "eks" {
@@ -41,11 +44,14 @@ module "eks" {
   cluster-name = "maroon"
   aws_region   = "ap-southeast-1"
 }
+```
 
-
+## Service Mesh [/main.tf]
+```
 module "service-mesh" {
   source            = "git::https://github.com/rajat965ng/aws_terraform_modules.git//service-mesh"
   init_sample_app   = true
   enable_monitoring = true
+  enable_logging    = true
 }
 ```
