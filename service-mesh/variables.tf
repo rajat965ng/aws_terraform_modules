@@ -9,3 +9,9 @@ variable "enable_monitoring" {
   description = "Initialize Prometheus and Grafana"
   type        = bool
 }
+
+variable "enable_logging" {
+  default     = false
+  description = "Initialize ELK"
+  type        = bool
+}

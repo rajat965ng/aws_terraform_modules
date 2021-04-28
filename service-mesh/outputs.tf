@@ -1,5 +1,5 @@
 locals {
-  ingress_ip = data.kubernetes_service.ingress-gateway.status != null ? data.kubernetes_service.ingress-gateway.status.0.load_balancer.0.ingress.0.hostname:""
+  ingress_ip = data.kubernetes_service.ingress-gateway.status != null ? data.kubernetes_service.ingress-gateway.status.0.load_balancer.0.ingress.0.hostname : ""
 }
 
 output "ingress_ip" {
